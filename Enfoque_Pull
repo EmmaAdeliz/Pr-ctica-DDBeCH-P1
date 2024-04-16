@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+// Función para simular la infección
+void simulateInfection(int n) {
+    // Inicializamos un vector de nodos (0 = sano, 1 = infectado)
+    vector<int> nodes(n, 0);
+
+    // Elegimos un nodo infectado al azar
+    int infectedNode = rand() % n;
+    nodes[infectedNode] = 1;
+
+    // Simulamos la propagación de la infección
+    while (true) {
+        // Elegimos un nodo sano al azar
+        int healthyNode = rand() % n;
+        if (nodes[healthyNode] == 0) {
+            // Infectamos el nodo sano
+            nodes[healthyNode] = 1;
+            cout << "El Nodo " << healthyNode << " infectado." << endl;
+            break;
+        }
+    }
+}
+
+int main() {
+    // Definimos el número de nodos
+    int n = 100;
+
+    // Inicializamos la semilla para generar números aleatorios
+    srand(time(NULL)); // Reemplazamos nullptr con NULL
+
+    // Simulamos la infección
+    simulateInfection(n);
+
+    return 0;
+}
